@@ -1,0 +1,29 @@
+{
+  "name": "zeus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "supervisor app/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@10.1.8.160:frontend/zeus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "assert": "^2.0.0",
+    "axios": "^0.24.0",
+    "formidable": "^2.0.1",
+    "koa": "^2.13.4",
+    "koa-body": "^4.2.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-router": "^10.1.1"
+  },
+  "devDependencies": {
+    "supervisor": "^0.12.0"
+  }
+}
