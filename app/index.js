@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const compose = require('koa-compose');
 const koaBody = require('koa-body');
+const cors = require('koa2-cors')
 
 const MD = require('./middlewares/');
 const utils = require('./common/utils.js');
@@ -12,6 +13,7 @@ const port = '8888'
 const host = 'localhost'
 
 app.use(compose(MD));
+app.use(cors())
 app.use(koaBody());
 app.use(router.routes());
 app.context.utils = utils;

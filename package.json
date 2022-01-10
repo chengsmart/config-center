@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app/index.js"
+    "dev": "nodemon --inspect app/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,10 +18,13 @@
     "assert": "^2.0.0",
     "axios": "^0.24.0",
     "formidable": "^2.0.1",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
     "koa-bodyparser": "^3.2.0",
-    "koa-router": "^10.1.1"
+    "koa-router": "^10.1.1",
+    "koa2-cors": "^2.0.6",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
