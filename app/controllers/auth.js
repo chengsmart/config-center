@@ -2,9 +2,9 @@ import Router from "koa-router";
 // const UserModel = require("../model/user.js");
 import query from "../common/db";
 
-const login = new Router();
+const auth = new Router();
 // /login/list
-login.get("/list", async (ctx, next) => {
+auth.get("/register", async (ctx, next) => {
   /* 使用 */
   const sql = "SELECT * FROM t_user";
   const list = await query(sql);
@@ -18,11 +18,18 @@ login.get("/list", async (ctx, next) => {
   await next();
 });
 
-// login
-login.get("/", async (ctx, next) => {
+// auth
+auth.get("/", async (ctx, next) => {
+  const sql = "SELECT * FROM t_user";
+  const list = await query(sql);
+
   ctx.response.status = 200;
-  ctx.response.body = "login";
+  ctx.response.body = {
+    resCode: 0,
+    msg: "",
+    resData: list,
+  };
   await next();
 });
 
-module.exports = login
+module.exports = auth
