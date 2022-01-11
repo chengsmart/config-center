@@ -1,5 +1,5 @@
-const mysql = require("mysql");
-const config = require("../config/index");
+import mysql from "mysql";
+import config from "../config/index";
 
 // 建立链接
 const dbConnection = () => {
@@ -21,4 +21,4 @@ const query = (sql, parmas = null) => {
     connection.end();
   });
 };
-module.exports = query;
+export default query;

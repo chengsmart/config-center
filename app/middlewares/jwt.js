@@ -1,7 +1,7 @@
-const jsonwebtoken = require('jsonwebtoken');
-const jwtConfig = require("../config/index");
+import jsonwebtoken from "jsonwebtoken";
+import jwtConfig from "../config/index";
 
-module.exports =  async (ctx, next) => {
+export default async (ctx, next) => {
   const token = ctx.get("token");
   if (token === "") {
     ctx.throw(401, "no auth");

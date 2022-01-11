@@ -1,13 +1,13 @@
-const bodyParser = require('koa-bodyparser')
-const cors = require('@koa/cors');
+import bodyParser from'koa-bodyparser';
+import cors from'@koa/cors';
 
 
 /**
  * 引入自定义文件
  */
-const router = require('../router');
-const response = require('./response');
-const error = require('./error');
+import router from'../router';
+import response from'./response';
+import error from'./error';
 
 /**
  * 由于koa接收到的post请求参数并不是json格式，我们需要将其转换为json
@@ -49,10 +49,10 @@ const mdCors = cors({
   allowMethods: [ 'GET', 'HEAD', 'PUT', 'POST', 'DELETE', 'PATCH' ]
 });
 
-module.exports = [
+export default [
   mdKoaBody,
   mdResHandler,
   mdErrorHandler,
   mdRoute,
   mdRouterAllowed
-];
+]

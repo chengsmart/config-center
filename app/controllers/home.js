@@ -1,6 +1,8 @@
-const Router = require('koa-router')
-const verify = require('../middlewares/jwt')
-const home = new Router()
+import Router from "koa-router";
+import verify from "../middlewares/jwt";
+// const UserModel = require("../model/user.js");
+
+const home = new Router();
 
 // home/list
 home.get('/list',verify, async (ctx, next) => {
@@ -14,6 +16,5 @@ home.get('/', async (ctx, next) => {
     ctx.response.body = 'home'
     await next()
 })
-
 
 module.exports = home

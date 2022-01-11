@@ -1,18 +1,19 @@
 {
-  "name": "zeus",
+  "name": "config-center",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --inspect app/index.js"
+    "dev": "nodemon --inspect ./index.js",
+    "build": "node --inspect ./index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@10.1.8.160:frontend/zeus.git"
+    "url": "git@github.com:chengsmart/config-center.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "assert": "^2.0.0",
@@ -27,6 +28,11 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-runtime": "^7.16.8",
+    "@babel/preset-env": "^7.16.8",
     "nodemon": "^2.0.15"
   }
 }

@@ -1,11 +1,11 @@
-const Koa = require('koa');
-const compose = require('koa-compose');
-const koaBody = require('koa-body');
-const cors = require('koa2-cors')
+import Koa from 'koa';
+import compose from 'koa-compose';
+import koaBody from 'koa-body';
+import cors from 'koa2-cors';
 
-const MD = require('./middlewares/');
-const utils = require('./common/utils.js');
-const router = require('./router/index.js');
+import MD from './middlewares/index';
+import utils from './common/utils';
+import router from './router/index';
 
 const app = new Koa();
 

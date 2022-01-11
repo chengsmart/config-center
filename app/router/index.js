@@ -1,5 +1,6 @@
-const koaRouter = require('koa-router');
-const fs = require('fs');
+import koaRouter from 'koa-router';
+import fs from 'fs';
+
 const router = new koaRouter({
   prefix: '/api', // 统一前缀，接口全部为 /api/xxx 格式
 });
@@ -13,5 +14,4 @@ controllers.forEach((element) => {
   router.use('/' + element.replace('.js', ''), module.routes())
 })
 
-
-module.exports = router;
+export default router;
