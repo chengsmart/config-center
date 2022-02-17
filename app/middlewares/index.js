@@ -1,13 +1,12 @@
-import bodyParser from'koa-bodyparser';
-import cors from'@koa/cors';
-
+import bodyParser from "koa-bodyparser";
+import cors from "@koa/cors";
 
 /**
  * 引入自定义文件
  */
-import router from'../router';
-import response from'./response';
-import error from'./error';
+import router from "../router";
+import response from "./response";
+import error from "./error";
 
 /**
  * 由于koa接收到的post请求参数并不是json格式，我们需要将其转换为json
@@ -19,10 +18,10 @@ const mdKoaBody = bodyParser();
  * 统一返回格式
  */
 const mdResHandler = response();
- 
- /**
-  * 错误处理
-  */
+
+/**
+ * 错误处理
+ */
 const mdErrorHandler = error();
 
 /**
@@ -36,17 +35,16 @@ const mdRoute = router.routes();
  * 如果加了这个中间件，这种情况时，会返回405 Method Not Allowed ，提示 request method 不匹配
  * 并在响应头返回接口支持的请求方法，更有利于调试
  * 现在是全局应用，也可以局部应用，但是局部应用就失去了意义，建议全局应用
- */ 
- const mdRouterAllowed = router.allowedMethods();
+ */
+const mdRouterAllowed = router.allowedMethods();
 
-
- /**
+/**
  * 跨域处理
  */
 const mdCors = cors({
-  origin: '*',
+  origin: "*",
   credentials: true,
-  allowMethods: [ 'GET', 'HEAD', 'PUT', 'POST', 'DELETE', 'PATCH' ]
+  allowMethods: ["GET", "HEAD", "PUT", "POST", "DELETE", "PATCH"],
 });
 
 export default [
@@ -54,5 +52,6 @@ export default [
   mdResHandler,
   mdErrorHandler,
   mdRoute,
-  mdRouterAllowed
-]
+  mdCors,
+  // mdRouterAllowed
+];

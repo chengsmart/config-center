@@ -16,12 +16,23 @@ auth.get("/register", async (ctx, next) => {
 });
 
 // auth
-auth.get("/", async (ctx, next) => {
-  const body = await AuthService.loginApi('chengshuai','111111')
-
-  ctx.response.status = 200;
-  ctx.response.body = body;
-  await next();
+auth.post("/", async (ctx, next) => {
+  let { name, passwd } = ctx.request.body;
+  let status;
+  let body;
+  try {
+    const res = await AuthService.loginApi(name, passwd);
+    status = 200;
+    body = res;
+  } catch (error) {
+    status = 200;
+    body = error;
+    console.log("error", error);
+  } finally {
+    ctx.response.status = status;
+    ctx.response.body = body;
+    await next();
+  }
 });
 
-module.exports = auth
+module.exports = auth;
