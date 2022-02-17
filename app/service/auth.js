@@ -7,7 +7,6 @@ class AuthService {
     // 获取数据库链接对象
     const db = connection();
     return new Promise((resolve, reject) => {
-      // TODO 调整真实数据
       const parmas = null;
       // 执行SQL语句
       db.query(sql, parmas, (error, results, fields) => {
@@ -19,7 +18,6 @@ class AuthService {
           });
         } else {
           if (results.length === 1) {
-            // TODO 数据库字段
             const userToken = { name: userName, id: 1 };
 
             const token = jsonwebtoken.sign(
@@ -37,7 +35,7 @@ class AuthService {
             });
           } else if (!results.length) {
             reject({
-              resCode: 400003,
+              resCode: 400002,
               msg: "用户名或密码错误",
               resData: {},
             });
