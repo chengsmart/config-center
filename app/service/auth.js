@@ -25,7 +25,7 @@ class AuthService {
                 userToken,
               },
               jwtConfig.secret,
-              { expiresIn: "1h" }
+              { expiresIn: "24h" }
             );
 
             resolve({

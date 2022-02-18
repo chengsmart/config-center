@@ -5,9 +5,23 @@ const config = new Router();
 
 // config/list
 config.get("/list", verify, async (ctx, next) => {
-  ctx.response.status = 200;
-  ctx.response.body = "config-list";
-  await next();
+  let { source } = ctx.query;
+  console.log("source", source);
+  let status;
+  let body;
+  try {
+    const res = await ConfigService.queryConfig(source);
+    status = 200;
+    body = res;
+  } catch (error) {
+    status = 200;
+    body = error;
+    console.log("error", error);
+  } finally {
+    ctx.response.status = status;
+    ctx.response.body = body;
+    await next();
+  }
 });
 
 // /config
@@ -30,9 +44,6 @@ config.post("/", verify, async (ctx, next) => {
     ctx.response.body = body;
     await next();
   }
-  ctx.response.status = 200;
-  ctx.response.body = "config";
-  await next();
 });
 
 // /config
