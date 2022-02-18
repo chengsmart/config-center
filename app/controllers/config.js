@@ -26,13 +26,11 @@ config.get("/list", verify, async (ctx, next) => {
 
 // /config
 config.post("/", verify, async (ctx, next) => {
-  console.log(ctx.request, "===");
-  console.log(ctx.request.body);
-  let { key, source } = ctx.request.body;
+  let { key, source, state } = ctx.request.body;
   let status;
   let body;
   try {
-    const res = await ConfigService.createConfig(key, source);
+    const res = await ConfigService.createConfig(key, source, state);
     status = 200;
     body = res;
   } catch (error) {

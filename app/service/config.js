@@ -2,12 +2,12 @@ import jsonwebtoken from "jsonwebtoken";
 import connection from "../common/db";
 import jwtConfig from "../config/index";
 class ConfigService {
-  static createConfig = async (keyName, source) => {
+  static createConfig = async (keyName, source, state) => {
     try {
       const checkKey = await this.checkConfig(keyName, source);
       console.log(checkKey, "checkKey");
 
-      const sql = `INSERT INTO t_config (key_name,source,state,is_delete) VALUES ("${keyName}","${source}",0,0)`;
+      const sql = `INSERT INTO t_config (key_name,source,state,is_delete) VALUES ("${keyName}","${source}","${state}",0)`;
       // 获取数据库链接对象
       const db = connection();
       return new Promise((resolve, reject) => {
@@ -61,7 +61,7 @@ class ConfigService {
           } else {
             reject({
               resCode: -1,
-              msg: "已存在该字段",
+              msg: "字段已存在",
               resData: {},
             });
           }
@@ -72,7 +72,7 @@ class ConfigService {
     });
   };
   static queryConfig = async (source) => {
-    const sql = `SELECT * FROM t_config WHERE source="${source}"`;
+    const sql = `SELECT * FROM t_config WHERE source="${source}" AND is_delete=0`;
     // 获取数据库链接对象
     const db = connection();
     return new Promise((resolve, reject) => {
